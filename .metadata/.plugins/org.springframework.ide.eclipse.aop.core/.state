@@ -2,5 +2,6 @@
 <aop-reference-model>
 <aop-project name="EducationBoardXML"/>
 <aop-project name="EducationBoardAnnotaion"/>
+<aop-project name="StudentManagement"/>
 <aop-project name="EducationBoard"/>
 </aop-reference-model>

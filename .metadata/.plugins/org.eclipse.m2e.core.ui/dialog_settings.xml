@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="MavenProjectWizardLocationPage">
 		<list key="location">
+			<item value="D:\Self-Study\Spring"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -46,10 +47,10 @@
 			<item value="edu.fa"/>
 		</list>
 		<list key="name">
-			<item value="EducationBoard"/>
+			<item value="StudentManagement"/>
 		</list>
 		<list key="artifactId">
-			<item value="EducationBoard"/>
+			<item value="StudentManagement"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
@@ -77,6 +78,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Self-Study\Spring\StudentManagement"/>
 			<item value="D:\Self-Study\Spring\EducationBoardXML - Copy"/>
 		</list>
 		<list key="projectNameTemplate">
