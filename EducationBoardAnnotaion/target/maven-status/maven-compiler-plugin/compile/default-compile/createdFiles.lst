@@ -1,0 +1,6 @@
+edu\fa\service\StudentServiceImpl.class
+edu\fa\service\StudentService.class
+edu\fa\repository\StudentRepositoryImpl.class
+edu\fa\repository\StudentRepository.class
+edu\fa\EducationApp.class
+edu\fa\model\Student.class

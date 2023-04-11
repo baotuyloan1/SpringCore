@@ -1,0 +1,12 @@
+package edu.fa.config;
+
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class ApplicationConfiguration {
+
+	
+	public static void main(String[] args) {
+		Applica
+	}
+}

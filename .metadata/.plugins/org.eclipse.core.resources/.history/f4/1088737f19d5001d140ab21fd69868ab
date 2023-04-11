@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<!-- autowire="default" nó sẽ gọi tới constructor mặc định của edu.fa.service.StudentServiceImpl -->
+	<!-- mặc định không ghi thì nó cũng là autowire="default" với điều kiện 
+		không có constructor inject phía bên dưới (constructor-arg) -->
+		<!-- autowire="constructor" nó sẽ vào con structor có tham số nó sẽ tự biến nhảy vào hàm nào để phù hop, nếu không có constructor có tham số thì nó nhảy vào default -->
+	<!-- autowire="byName" -->
+	<bean name="studentService"
+		class="edu.fa.service.StudentServiceImpl"
+		autowire="byName"
+		>
+
+
+
+		<!-- manual wired -->
+		<!-- Constructor Injection -->
+		<!-- name: tên biến được truyền vào trong constructor -->
+		<!-- ref trong property phải cùng tên với name trong bean liên quan -->
+		<!-- <constructor-arg name="studentRepositoryParameter" ref="studentRepository"> 
+			</constructor-arg> -->
+
+		<!-- Setter injection -->
+		<!-- ref trong property phải cùng tên với name trong bean liên quan -->
+		<!-- name trong property phải dùng tên trong hàm setter liên quan -->
+<!-- 		<property name="studentRepositorys" ref="studentRepository"></property> -->
+	</bean>
+	<bean name="studentRepositorys"
+		class="edu.fa.repository.StudentRepositoryImpl"></bean>
+</beans>

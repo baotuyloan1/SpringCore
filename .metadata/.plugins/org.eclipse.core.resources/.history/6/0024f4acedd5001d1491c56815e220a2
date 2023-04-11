@@ -1,0 +1,15 @@
+package edu.fa;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import edu.fa.config.ApplicationConfiguration;
+
+public class EducationApp {
+
+	public static void main(String[] args) {
+		System.out.println("Hello");
+		ApplicationContext context = new AnnotationConfigApplicationContext(ApplicationConfiguration.class);
+	}
+
+}

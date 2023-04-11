@@ -1,0 +1,28 @@
+package edu.fa.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import edu.fa.repository.StudentRepository;
+import edu.fa.repository.StudentRepositoryImpl;
+import edu.fa.service.StudentService;
+import edu.fa.service.StudentServiceImpl;
+
+@Configuration
+public class ApplicationConfiguration {
+
+	@Bean(name = "studentService")
+	public StudentService zxczxcgetStudentService1() {
+		
+//		Cách 1 setter injection
+		StudentServiceImpl studentRepository = new StudentServiceImpl();
+		studentRepository.setStudentRepository(zxczxcgetStudentRepository());
+		
+//		Cách 2 constructor injection
+		return new StudentServiceImpl(zxczxcgetStudentRepository());
+	}
+	
+	public StudentRepository zxczxcgetStudentRepository() {
+		return new StudentRepositoryImpl();
+	}
+}

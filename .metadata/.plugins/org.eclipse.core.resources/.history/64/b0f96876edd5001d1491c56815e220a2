@@ -1,0 +1,12 @@
+package edu.fa.config;
+
+import org.springframework.context.annotation.Configuration;
+
+import edu.fa.service.StudentService;
+
+@Configuration
+public class ApplicationConfiguration {
+	public StudentService getStudentService() {
+		return new StudentServiceImpl();
+	}
+}

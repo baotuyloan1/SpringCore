@@ -1,0 +1,67 @@
+package edu.fa.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import edu.fa.model.Student;
+import edu.fa.repository.StudentRepository;
+
+@Service("studentServicez")
+public class StudentServiceImpl implements StudentService {
+//	member injection
+	@Autowired
+	private StudentRepository studentRepositoryz ;
+	private Student student;
+
+	public StudentServiceImpl() {
+		System.out.println("Constructor default injection");
+	}
+	
+	
+
+	public Student getStudent() {
+		return student;
+	}
+
+// Setter Injection
+//	@Autowired
+	public void setStudentzxczxc(Student student) {
+		this.student = student;
+		System.out.println("Student Setter Injection");
+	}
+
+
+
+
+
+
+
+	@Autowired
+	public StudentServiceImpl(StudentRepository studentRepositoryParameter, Student student) {
+		super();
+		System.out.println("Constructor Injection");
+		System.out.println(student);
+		this.studentRepositoryz = studentRepositoryParameter;
+	}
+	
+
+
+	public StudentRepository getStudentRepository() {
+		return studentRepositoryz;
+	}
+	
+
+// setter injection
+	@Autowired
+	public void setStudentRepositoryz(StudentRepository studentRepository) {
+		System.out.println("Setter Injection");
+		this.studentRepositoryz = studentRepository;
+	}
+
+	@Override
+	public List<Student> getAllStudent() {
+		return studentRepositoryz.getAllStudent();
+	}
+}
