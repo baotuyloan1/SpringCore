@@ -8,13 +8,19 @@
 	<context:component-scan
 		base-package="edu.fa.dao"></context:component-scan>
 
-	<bean name="dataSource"
+
+	<bean name="studentJdbcDaoSupportClass1"
+		class="edu.fa.dao.StudentJdbcDaoSupport">
+		<property name="dataSource" ref="dataSource1" />
+	</bean>
+
+	<bean name="dataSource1"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-<!-- 		<property name="driverClassName"
-			value="com.microsoft.sqlserver.jdbc.SQLServerDriver" /> -->
+		<!-- <property name="driverClassName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+			/> -->
 		<property name="url"
 			value="jdbc:sqlserver://DESKTOP-HKVP723\\BAO:1433;databaseName=education;trustServerCertificate=true" />
-			<property name="username" value="sa"/>
-			<property name="password" value="abcd1234"/>
+		<property name="username" value="sa" />
+		<property name="password" value="abcd1234" />
 	</bean>
 </beans>

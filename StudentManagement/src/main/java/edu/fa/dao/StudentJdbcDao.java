@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 
 import edu.fa.model.Student;
 
-@Component()
+@Component
 public class StudentJdbcDao {
 	private String jdbcUrl = "jdbc:sqlserver://DESKTOP-HKVP723\\BAO:1433;databaseName=education;trustServerCertificate=true;";
 
