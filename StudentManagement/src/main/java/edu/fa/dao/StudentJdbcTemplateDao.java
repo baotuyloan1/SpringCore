@@ -1,7 +1,6 @@
 package edu.fa.dao;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -9,23 +8,35 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.fa.model.Student;
 
 @Component()
-public class StudentJdbcDao {
-	private String jdbcUrl = "jdbc:sqlserver://DESKTOP-HKVP723\\BAO:1433;databaseName=education;trustServerCertificate=true;";
+public class StudentJdbcTemplateDao {
 
-//	jdbc Connection
 	private Connection connection = null;
 	private Statement statement = null;
+
+	@Autowired
+	private DataSource dataSource;
+
+	public DataSource getDataSource() {
+		return dataSource;
+	}
+
+	public void setDataSource(DataSource dataSource) {
+		this.dataSource = dataSource;
+	}
 
 	public void createConnection() {
 		if (connection == null) {
 			try {
-				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
+//				connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
+				connection = dataSource.getConnection();
 				System.out.println("AAA");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
@@ -49,7 +60,6 @@ public class StudentJdbcDao {
 
 	public void insertStudent(Student student) {
 		createConnection();
-
 		try {
 			statement = connection.createStatement();
 			if (statement != null) {
