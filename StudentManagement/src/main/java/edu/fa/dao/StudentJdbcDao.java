@@ -7,7 +7,9 @@ import java.sql.Statement;
 
 import org.springframework.stereotype.Component;
 
-@Component()
+import edu.fa.model.Student;
+
+@Component("studentJdbcDao")
 public class StudentJdbcDao {
 	private String jdbcUrl = "jdbc:sqlserver://DESKTOP-HKVP723\\BAO:1433;databaseName=education;trustServerCertificate=true;";
 
@@ -18,8 +20,8 @@ public class StudentJdbcDao {
 	public void createConnection() {
 		if (connection == null) {
 			try {
-				Connection connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
-				System.out.println("Kết nối thành công đến SQL Server 2019");
+				connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
+				System.out.println("Kết nối thành công đến SQL Server 2019" + connection);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -27,7 +29,7 @@ public class StudentJdbcDao {
 
 	}
 
-	private void shutdown() {
+	public void shutdown() {
 		try {
 			if (statement != null) {
 				statement.close();
@@ -37,6 +39,19 @@ public class StudentJdbcDao {
 			}
 		} catch (SQLException e) {
 			// TODO: handle exception
+		}
+	}
+
+	public void insertStudent(Student student) {
+		createConnection();
+		try {
+			statement = connection.createStatement();
+			statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
+					+ student.getLocation() + "')");
+			statement.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
