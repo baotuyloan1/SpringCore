@@ -16,5 +16,6 @@ public class StudentManagement {
 		System.out.println(dao.getAllStudents());
 		System.out.println(dao.countStudents());
 		System.out.println(dao.nameStudents());
+		System.out.println(dao.getStudentById(1));
 	}
 }

@@ -12,6 +12,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import edu.fa.model.Student;
@@ -85,6 +86,11 @@ public class StudentJdbcTemplateDao {
 
 	}
 
+	public Student getStudentById(int id) {
+		String query = "Select * from student where id = ?";
+		return jdbcTemplate.queryForObject(query, new Object[] {id}, new StudentMapper());
+	}
+
 	public List<Student> getAllStudents() {
 		createConnection();
 		List<Student> students = new ArrayList<>();
@@ -104,5 +110,15 @@ public class StudentJdbcTemplateDao {
 			e.printStackTrace();
 		}
 		return students;
+	}
+	
+	
+	private static final class StudentMapper implements RowMapper<Student>{
+
+		@Override
+		public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
+			return new Student(rs.getInt("id"),rs.getString("name"), rs.getString("location"));
+		}
+		
 	}
 }
