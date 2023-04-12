@@ -11,11 +11,12 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import edu.fa.model.Student;
 
-@Component()
+@Component
 public class StudentJdbcTemplateDao {
 
 	private Connection connection = null;
@@ -23,6 +24,8 @@ public class StudentJdbcTemplateDao {
 
 	@Autowired
 	private DataSource dataSource;
+
+	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
 	public DataSource getDataSource() {
 		return dataSource;
@@ -37,7 +40,6 @@ public class StudentJdbcTemplateDao {
 			try {
 //				connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
 				connection = dataSource.getConnection();
-				System.out.println("AAA");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -59,18 +61,23 @@ public class StudentJdbcTemplateDao {
 	}
 
 	public void insertStudent(Student student) {
-		createConnection();
-		try {
-			statement = connection.createStatement();
-			if (statement != null) {
-				statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
-						+ student.getLocation() + "')");
-			}
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		jdbcTemplate.setDataSource(dataSource);
+		String query = "insert into student values (" + student.getId() + ",'" + student.getName() + "','"
+				+ student.getLocation() + "')";
+		jdbcTemplate.execute(query);
+//		createConnection();
+//		try {
+//			statement = connection.createStatement();
+//			if (statement != null) {
+//				statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
+//						+ student.getLocation() + "')");
+//			}
+//
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 
