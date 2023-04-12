@@ -7,4 +7,6 @@
 
 	<context:component-scan
 		base-package="edu.fa.dao"></context:component-scan>
+
+
 </beans>

@@ -24,7 +24,9 @@ public class StudentJdbcDao {
 	public void createConnection() {
 		if (connection == null) {
 			try {
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 				connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
+				System.out.println("AAA");
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -47,14 +49,19 @@ public class StudentJdbcDao {
 
 	public void insertStudent(Student student) {
 		createConnection();
+
 		try {
 			statement = connection.createStatement();
-			statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
-					+ student.getLocation() + "')");
+			if (statement != null) {
+				statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
+						+ student.getLocation() + "')");
+			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
 
 	public List<Student> getAllStudents() {
