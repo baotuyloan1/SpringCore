@@ -22,17 +22,18 @@ public class StudentJdbcTemplateDao {
 	private Connection connection = null;
 	private Statement statement = null;
 
-	@Autowired
 	private DataSource dataSource;
 
-	private JdbcTemplate jdbcTemplate = new JdbcTemplate();
+	private JdbcTemplate jdbcTemplate;
 
 	public DataSource getDataSource() {
 		return dataSource;
 	}
 
+	@Autowired
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
+		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
 	public void createConnection() {
@@ -61,35 +62,33 @@ public class StudentJdbcTemplateDao {
 	}
 
 	public void insertStudent(Student student) {
-		jdbcTemplate.setDataSource(dataSource);
 		String query = "insert into student values (" + student.getId() + ",'" + student.getName() + "','"
 				+ student.getLocation() + "')";
 		jdbcTemplate.execute(query);
-//		createConnection();
-//		try {
-//			statement = connection.createStatement();
-//			if (statement != null) {
-//				statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
-//						+ student.getLocation() + "')");
-//			}
-//
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-
 	}
-	
+
 	public void deleteStudent() {
-		jdbcTemplate.setDataSource(dataSource);
 		String query = "delete from student";
 		jdbcTemplate.execute(query);
+
+	}
+
+	public int countStudents() {
+		String query = "select count(*) from student";
+		return jdbcTemplate.queryForObject(query, Integer.class);
+
+	}
+
+	public String nameStudents() {
+		String query = "select name from student";
+		return jdbcTemplate.queryForObject(query, String.class);
 
 	}
 
 	public List<Student> getAllStudents() {
 		createConnection();
 		List<Student> students = new ArrayList<>();
+
 		try {
 			statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery("select * from student");

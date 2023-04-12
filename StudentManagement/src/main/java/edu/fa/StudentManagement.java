@@ -11,8 +11,10 @@ public class StudentManagement {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		StudentJdbcTemplateDao dao = context.getBean("studentJdbcTemplateDao", StudentJdbcTemplateDao.class);
-		dao.insertStudent(new Student(4, "Clover 1", "Viet Nam"));
-		System.out.println(dao.getAllStudents());
 		dao.deleteStudent();
+		dao.insertStudent(new Student(1, "Clover", "Viet Nam"));
+		System.out.println(dao.getAllStudents());
+		System.out.println(dao.countStudents());
+		System.out.println(dao.nameStudents());
 	}
 }
