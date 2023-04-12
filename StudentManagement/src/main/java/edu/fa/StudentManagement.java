@@ -10,6 +10,7 @@ public class StudentManagement {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("context.xml");
 		StudentJdbcDao dao = context.getBean("studentJdbcDao", StudentJdbcDao.class);
-		dao.insertStudent(new Student(3,"Clover 1","Viet Nam"));
+		dao.insertStudent(new Student(4, "Clover 1", "Viet Nam"));
+		System.out.println(dao.getAllStudents());
 	}
 }

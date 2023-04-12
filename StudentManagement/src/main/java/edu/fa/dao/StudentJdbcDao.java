@@ -2,8 +2,12 @@ package edu.fa.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Component;
 
@@ -21,7 +25,6 @@ public class StudentJdbcDao {
 		if (connection == null) {
 			try {
 				connection = DriverManager.getConnection(jdbcUrl, "sa", "abcd1234");
-				System.out.println("Kết nối thành công đến SQL Server 2019" + connection);
 			} catch (Exception e) {
 				System.out.println(e.getMessage());
 			}
@@ -48,10 +51,29 @@ public class StudentJdbcDao {
 			statement = connection.createStatement();
 			statement.execute("insert into student values (" + student.getId() + ",'" + student.getName() + "','"
 					+ student.getLocation() + "')");
-			statement.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	public List<Student> getAllStudents() {
+		createConnection();
+		List<Student> students = new ArrayList<>();
+		try {
+			statement = connection.createStatement();
+			ResultSet rs = statement.executeQuery("select * from student");
+			ResultSetMetaData rsmd = rs.getMetaData();
+			while (rs.next()) {
+				int id = rs.getInt(1);
+				String name = rs.getString(2);
+				String location = rs.getString(3);
+				students.add(new Student(id, name, location));
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return students;
 	}
 }
