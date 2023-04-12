@@ -13,5 +13,6 @@ public class StudentManagement {
 		StudentJdbcTemplateDao dao = context.getBean("studentJdbcTemplateDao", StudentJdbcTemplateDao.class);
 		dao.insertStudent(new Student(4, "Clover 1", "Viet Nam"));
 		System.out.println(dao.getAllStudents());
+		dao.deleteStudent();
 	}
 }

@@ -61,7 +61,6 @@ public class StudentJdbcTemplateDao {
 	}
 
 	public void insertStudent(Student student) {
-
 		jdbcTemplate.setDataSource(dataSource);
 		String query = "insert into student values (" + student.getId() + ",'" + student.getName() + "','"
 				+ student.getLocation() + "')";
@@ -78,6 +77,13 @@ public class StudentJdbcTemplateDao {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+
+	}
+	
+	public void deleteStudent() {
+		jdbcTemplate.setDataSource(dataSource);
+		String query = "delete from student";
+		jdbcTemplate.execute(query);
 
 	}
 
