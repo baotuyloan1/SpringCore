@@ -88,37 +88,20 @@ public class StudentJdbcTemplateDao {
 
 	public Student getStudentById(int id) {
 		String query = "Select * from student where id = ?";
-		return jdbcTemplate.queryForObject(query, new Object[] {id}, new StudentMapper());
+		return jdbcTemplate.queryForObject(query, new Object[] { id }, new StudentMapper());
 	}
 
 	public List<Student> getAllStudents() {
-		createConnection();
-		List<Student> students = new ArrayList<>();
-
-		try {
-			statement = connection.createStatement();
-			ResultSet rs = statement.executeQuery("select * from student");
-			ResultSetMetaData rsmd = rs.getMetaData();
-			while (rs.next()) {
-				int id = rs.getInt(1);
-				String name = rs.getString(2);
-				String location = rs.getString(3);
-				students.add(new Student(id, name, location));
-			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return students;
+		String query = "select * from student";
+		return jdbcTemplate.query(query, new StudentMapper());
 	}
-	
-	
-	private static final class StudentMapper implements RowMapper<Student>{
+
+	private static final class StudentMapper implements RowMapper<Student> {
 
 		@Override
 		public Student mapRow(ResultSet rs, int rowNum) throws SQLException {
-			return new Student(rs.getInt("id"),rs.getString("name"), rs.getString("location"));
+			return new Student(rs.getInt("id"), rs.getString("name"), rs.getString("location"));
 		}
-		
+
 	}
 }
