@@ -31,6 +31,7 @@ public class StudentService {
 		System.out.println(studentRepository.findByNameOrLocation("Bao Nguyen", "Viet Nam 2"));
 		System.out.println(studentRepository.findFirstByOrderByNameDesc());
 		System.out.println(studentRepository.getAllByName("Bao Nguyen"));
+		System.out.println(studentRepository.getAllByNameUsingQuery("Bao Nguyen 3"));
 	}
 
 }
