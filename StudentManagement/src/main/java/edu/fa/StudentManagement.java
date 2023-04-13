@@ -25,6 +25,7 @@ public class StudentManagement {
 //		dao.save(new Student("BaoKey 3","Da Nang"));
 		StudentService service = context.getBean("studentService", StudentService.class);
 		service.save(new Student("Bao Nguyen", "Viet Nam"));
-		service.saveUsingRepository(new Student(1, "Bao Nguyen", "Viet Nam"));
+		service.saveUsingRepository(new Student(1, "Bao Nguyen 2", "Viet Nam 2"));
+		service.test();
 	}
 }

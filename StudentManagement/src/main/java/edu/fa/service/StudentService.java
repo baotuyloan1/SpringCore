@@ -23,4 +23,14 @@ public class StudentService {
 	public void saveUsingRepository(Student student) {
 		studentRepository.save(student);
 	}
+
+	public void test() {
+		System.out.println(studentRepository.count());
+		System.out.println(studentRepository.findAll());
+		System.out.println(studentRepository.findByNameAndLocation("Bao Nguyen 2", "Viet Nam 2"));
+		System.out.println(studentRepository.findByNameOrLocation("Bao Nguyen", "Viet Nam 2"));
+		System.out.println(studentRepository.findFirstByOrderByNameDesc());
+		System.out.println(studentRepository.getAllByName("Bao Nguyen"));
+	}
+
 }
