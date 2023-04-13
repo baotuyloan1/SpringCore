@@ -10,7 +10,6 @@
 <fullyQualifiedTypeName name="edu.fa.repository.StudentRepository"/>
 <fullyQualifiedTypeName name="edu.fa.repository.StudentRepositoryImpl"/>
 <fullyQualifiedTypeName name="edu.fa.service.StudentServiceImpl"/>
-<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
 <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
 <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
 <fullyQualifiedTypeName name="java.util.jar.Attributes.Name"/>
@@ -25,7 +24,6 @@
 <fullyQualifiedTypeName name="java.sql.ResultSetMetaData"/>
 <fullyQualifiedTypeName name="java.sql.DriverManager"/>
 <fullyQualifiedTypeName name="javax.activation.DataSource"/>
-<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 <fullyQualifiedTypeName name="javax.sql.DataSource"/>
 <fullyQualifiedTypeName name="edu.fa.dao.StudentJdbcTemplateDao"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
@@ -36,8 +34,17 @@
 <fullyQualifiedTypeName name="java.lang.Object"/>
 <fullyQualifiedTypeName name="javax.swing.tree.RowMapper"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.core.RowMapper"/>
-<fullyQualifiedTypeName name="edu.fa.model.Student"/>
 <fullyQualifiedTypeName name="edu.fa.dao.StudentJdbcTemplateDao.StudentMapper"/>
 <fullyQualifiedTypeName name="org.springframework.jdbc.core.support.JdbcDaoSupport"/>
 <fullyQualifiedTypeName name="edu.fa.dao.StudentJdbcDaoSupport"/>
+<fullyQualifiedTypeName name="org.hibernate.SessionFactory"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.hibernate.Session"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+<fullyQualifiedTypeName name="edu.fa.dao.StudentHibernateDao"/>
+<fullyQualifiedTypeName name="edu.fa.model.Student"/>
+<fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.persistence.Id"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Qualifier"/>
 </qualifiedTypeNameHistroy>
