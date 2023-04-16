@@ -82,6 +82,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="D:\Self-Study\Code Quality"/>
 			<item value="D:\Self-Study\Spring\StudentManagement"/>
 			<item value="D:\Self-Study\Spring\EducationBoardXML - Copy"/>
 		</list>
